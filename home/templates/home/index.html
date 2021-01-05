@@ -1,0 +1,72 @@
+{% extends 'home/base.html' %}
+
+{% block title %}
+  {{ title }}
+{% endblock %}
+
+{% block body %}
+  {% for post in news %}
+    <div class="alert alert-light">
+      <h3>{{ post.title }}</h3>
+      <p>{{ post.text|striptags|truncatechars:200 }}</p> <!--Фильтр не показывает HTML код и фильтр обрезает статью по 200 символов -->
+      <div class="row">
+        <div class="">
+            <img src="{{ post.avtor.profile.img.url }}" alt="{{ post.avtor }}" class="user_images"">
+        </div>
+        <div class="mt-2">
+          <span class="text-muted">Публикация: {{ post.date|date:"d E Y в H:i" }}</span>
+          <!-- {% if post.avtor %} -->
+            <p><b>Avtor:</b> <a href="{% url 'user-news' post.avtor %}">{{ post.avtor }}</a></p>
+          <!-- {% else %}
+            <p><b>Avtor:</b> <mark>Admin</mark></p>
+          {% endif %} -->
+        </div>
+      </div>
+      <a href="{% url 'news-detail' post.id  %}" class="btn btn-outline-warning mt-3">Читать далее</a>
+    </div>
+{% endfor %}
+
+{% if is_paginated %}
+  {% if page_obj.has_previous %}  <!-- Проверка предыдущей страницы -->
+  <a href="?page=1" class="btn btn-outline-danger">Начало</a>
+  <a href="?page={{ page_obj.previous_page_number }}" class="btn btn-outline-danger">Предыдущая</a>
+  {% endif %}
+
+{% for num in page_obj.paginator.page_range %}
+  {% if num == page_obj.number %}
+  <button class="btn btn-danger">{{ num }}</button>
+  {% elif num > page_obj.number|add:'-3' and num < page_obj.number|add:'3' %}
+
+    <a href="?page={{ num }}" class="btn btn-outline-danger">{{ num }}</a>
+  {% endif %}
+{% endfor %}
+
+  {% if page_obj.has_next %}  <!-- Проверка следующей страницы -->
+  <a href="?page={{page_obj.next_page_number}}" class="btn btn-outline-danger">Следующая</a>
+  <a href="?page={{ page_obj.paginator.num_pages }}" class="btn btn-outline-danger">Последняя</a>
+  {% endif %}
+{% endif %}
+{% endblock %}
+
+{% block aside %}
+  <h4 class="mt-2">Интересные статьи</h4>
+
+  <img src="https://otv-media.ru/upload/iblock/24a/24a2218e4fc26105d4f051ba9e957a2b.jpg" class="img-thumbmail ">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+  <a href="https://unsplash.com/s/photos/dog?order_by=latest&orientation=landscape">
+    <button class="btn btn-warning">Посмотреть</button>
+  </a>
+
+
+  <img src="https://s1.1zoom.ru/prev2/565/Dogs_Nova_Scotia_Duck_Tolling_Retriever_Puppy_564154_300x198.jpg" class="img-thumbmail mt-4">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+  <a href="https://unsplash.com/s/photos/dog?order_by=latest&orientation=landscape">
+    <button class="btn btn-warning">Посмотреть</button>
+  </a>
+
+
+{% endblock %}
+
+

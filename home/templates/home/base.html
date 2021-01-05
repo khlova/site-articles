@@ -1,0 +1,117 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>{% block title %}{% endblock %}</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="{% static 'home/main.css'%}">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <a class="navbar-brand" href="#">itPtoger</a>
+    <div class="collapse navbar-collapse" id="navbarsExample09">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'home' %}">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'contacti' %}">Contacti</a>
+        </li>
+      </ul>
+
+
+    {% if not user.is_authenticated %}
+      <a href="{% url 'reg' %}">
+        <button class="btn btn-outline-warning">Registration</button>
+      </a>
+      <a href="{% url 'user' %}">
+        <button class="btn btn-outline-info ml-2">Войти</button>
+      </a>
+  {% else %}
+  <a href="{% url 'news-add' %}">
+    <button class="btn btn-outline-secondary mr-2">Dobavit</button>
+  </a>
+  <a href="{% url 'profile' %}">
+    <button class="btn btn-outline-warning">Профиль</button>
+  </a>
+  <a href="{% url 'exit' %}">
+    <button class="btn btn-outline-info ml-2">Выйти</button>
+  </a>
+  {% endif %}
+
+    </div>
+</nav>
+<div class="container mt-5">
+  <div class="row">
+    <div class="frm col-md-8">
+      {% if messages %}
+          {% for mess in messages %}
+            <div class="alert alert-success">
+              {{ mess }}
+            </div>
+          {% endfor %}
+      {% endif %}
+
+      {% block body %}
+      {% endblock %}
+    </div>
+    <aside class="col-md-4">
+        <h3>Боковая часть</h3>
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae iste incidunt atque nihil reprehenderit consectetur beatae. Tenetur odio illum facilis.</p>
+        {% block aside %}
+        {% endblock %}
+    </aside>
+  </div>
+</div>
+
+<footer class="container py-5 mt-4">
+  <div class="row">
+    <div class="col-12 col-md">
+
+      <small class="d-block mb-3 text-muted">© 2100</small>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Features</h5>
+      <ul class="list-unstyled text-small">
+        <li><a class="link-secondary" href="#">Cool stuff</a></li>
+        <li><a class="link-secondary" href="#">Random feature</a></li>
+        <li><a class="link-secondary" href="#">Team feature</a></li>
+        <li><a class="link-secondary" href="#">Stuff for developers</a></li>
+        <li><a class="link-secondary" href="#">Another one</a></li>
+        <li><a class="link-secondary" href="#">Last time</a></li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Resources</h5>
+      <ul class="list-unstyled text-small">
+        <li><a class="link-secondary" href="#">Resource name</a></li>
+        <li><a class="link-secondary" href="#">Resource</a></li>
+        <li><a class="link-secondary" href="#">Another resource</a></li>
+        <li><a class="link-secondary" href="#">Final resource</a></li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>Resources</h5>
+      <ul class="list-unstyled text-small">
+        <li><a class="link-secondary" href="#">Business</a></li>
+        <li><a class="link-secondary" href="#">Education</a></li>
+        <li><a class="link-secondary" href="#">Government</a></li>
+        <li><a class="link-secondary" href="#">Gaming</a></li>
+      </ul>
+    </div>
+    <div class="col-6 col-md">
+      <h5>About</h5>
+      <ul class="list-unstyled text-small">
+        <li><a class="link-secondary" href="#">Team</a></li>
+        <li><a class="link-secondary" href="#">Locations</a></li>
+        <li><a class="link-secondary" href="#">Privacy</a></li>
+        <li><a class="link-secondary" href="#">Terms</a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+</body>
+</html>

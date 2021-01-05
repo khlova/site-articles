@@ -1,0 +1,45 @@
+{% extends 'home/base.html' %}
+{% block title %}
+  Кабинет пользователя
+{% endblock %}
+
+{% block body %}
+  <div class="form-section">
+  <h1>Кабинет пользователя</h1>
+  <div class="media text-muted pt-3">
+      <img class="bd-placeholder-img mr-2 rounded" width="64" height="64" src="{{ user.profile.img.url }}">
+      <p class="media-body pb-3 mb-0 small lh-125 border-bottom border-gray">
+        <strong class="d-block text-gray-dark">@{{ user.username }}</strong>
+        {% if user.email %}
+    <b>Email: </b>{{ user.email }}
+    {% endif %}
+      </p>
+    </div>
+
+    <h3 class="mt-4">Изменить данные про пользователя</h3>
+    <form method="post" enctype="multipart/form-data" class="form-register mt-4">
+      {% csrf_token %}
+      {{ updateUserForm.as_p }}
+      {{ profileForm.as_p }}
+      <button class="btn btn-outline-warning" type="submit">Обновить</button>
+
+    </form>
+  </div>
+{% endblock %}
+
+{% block aside %}
+  <h4 class="mt-2">Интересные статьи</h4>
+  <img src="https://s1.1zoom.ru/prev2/565/Dogs_Nova_Scotia_Duck_Tolling_Retriever_Puppy_564154_300x198.jpg" class="img-thumbmail">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+  <a href="https://unsplash.com/s/photos/dog?order_by=latest&orientation=landscape">
+    <button class="btn btn-warning">Посмотреть</button>
+  </a>
+
+  <img src="https://otv-media.ru/upload/iblock/24a/24a2218e4fc26105d4f051ba9e957a2b.jpg" class="img-thumbmail mt-4">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+  <a href="https://unsplash.com/s/photos/dog?order_by=latest&orientation=landscape">
+    <button class="btn btn-warning">Посмотреть</button>
+  </a>
+{% endblock %}

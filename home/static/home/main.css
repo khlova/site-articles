@@ -1,0 +1,66 @@
+body{
+
+background: #beaecd;
+}
+
+.alert-light {
+  border-color: #685a8c;
+}
+
+footer {
+  width: 70%;
+  margin-left:15%;
+  border-top: 1px solid #685a8c;
+}
+
+.link-secondary {
+    color: #4a5a69;
+}
+
+.form-register{
+  padding: 20px;
+  background: #fafafa;
+  border: 1px solid silver;
+  margin-top: 20px;
+}
+
+.form-register .helptext {color: #b7b7b7}
+
+.form-register ul.errorlist{
+  color: #ca5858;
+  font-weight: bold;
+}
+
+.form-register.auth input, .form-register.auth textarea{
+  display: block;
+  width: 96%;
+  margin-top: 5px;
+  border: 1px solid silver;
+  border-radius: 5px;
+  padding: 2%;
+}
+
+.user_images{
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  margin-right: 15px;
+  margin-left: 20px;
+}
+
+.form-section {
+  background: #fff;
+  padding: 20px;
+  border: 1px solid silver;
+  box-sizing: border-box;
+  width: 100%;
+  -webkit-box-shadow: 0 2px 3px 0 rgba(74,74,74,.21);
+  -moz-box-shadow: 0 2px 3px 0 rgba(74,74,74,.21);
+  box-shadow: 0 2px 3px 0 rgba(74,74,74,.21);
+}
+
+.form-section > h2 {
+  color: #b38a22;
+  margin-bottom: 10px;
+}
+

@@ -1,0 +1,48 @@
+{% extends 'home/base.html' %}
+
+{% block title %}
+  {{ title }}
+{% endblock %}
+
+{% block body %}
+    <div class="alert alert-light">
+      <h3>{{ post.title }}</h3>
+     <p>{{ post.text|safe }}</p>   <!--Фильтр обрабатывающий HTML код в выводимом тексте -->
+      <div class="row">
+        <div class="">
+            <img src="{{ post.avtor.profile.img.url }}" alt="{{ post.avtor }}" class="user_images"">
+        </div>
+        <div class="mt-2">
+          <span class="text-muted">Публикация: {{ post.date|date:"d E Y в H:i" }}</span>
+            <p><b>Avtor:</b> <a href="{% url 'user-news' post.avtor %}">{{ post.avtor }}</a></p>
+        </div>
+      </div>
+      {% if object.avtor == user %}
+      <hr>
+      <a href="{% url 'news-update' object.id %}" class="btn btn-info">Обновить статью</a>
+      <a href="{% url 'news-delete' object.id %}" class="btn btn-danger">Удалить статью</a>
+      {% endif %}
+    </div>
+
+{% endblock %}
+
+{% block aside %}
+  <h4 class="mt-2">Интересные статьи</h4>
+
+  <img src="https://otv-media.ru/upload/iblock/24a/24a2218e4fc26105d4f051ba9e957a2b.jpg" class="img-thumbmail ">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+  <a href="https://unsplash.com/s/photos/dog?order_by=latest&orientation=landscape">
+    <button class="btn btn-warning">Посмотреть</button>
+  </a>
+
+
+  <img src="https://s1.1zoom.ru/prev2/565/Dogs_Nova_Scotia_Duck_Tolling_Retriever_Puppy_564154_300x198.jpg" class="img-thumbmail mt-4">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+  <a href="https://unsplash.com/s/photos/dog?order_by=latest&orientation=landscape">
+    <button class="btn btn-warning">Посмотреть</button>
+  </a>
+
+
+{% endblock %}

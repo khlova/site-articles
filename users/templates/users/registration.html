@@ -1,0 +1,33 @@
+{% extends 'home/base.html' %}
+{% block title %}
+  {{ title }}
+{% endblock %}
+
+{% block body %}
+  <h1>{{ title }}</h1>
+  <form method="post" class="form-register auth">
+    {% csrf_token %}
+    {{ form.as_p}}
+    <button class="btn btn-outline-warning" type="submit">Registration</button>
+    <hr>
+    <p>Уже зарегистрированы? <a href="{% url 'user' %}">Войти в личный кабинет</a></p>
+  </form>
+
+{% endblock %}
+
+{% block aside %}
+  <h4 class="mt-2">Интересные статьи</h4>
+  <img src="https://s1.1zoom.ru/prev2/565/Dogs_Nova_Scotia_Duck_Tolling_Retriever_Puppy_564154_300x198.jpg" class="img-thumbmail">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+  <a href="https://unsplash.com/s/photos/dog?order_by=latest&orientation=landscape">
+    <button class="btn btn-warning">Посмотреть</button>
+  </a>
+
+  <img src="https://otv-media.ru/upload/iblock/24a/24a2218e4fc26105d4f051ba9e957a2b.jpg" class="img-thumbmail mt-4">
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+
+  <a href="https://unsplash.com/s/photos/dog?order_by=latest&orientation=landscape">
+    <button class="btn btn-warning">Посмотреть</button>
+  </a>
+{% endblock %}
