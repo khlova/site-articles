@@ -1,1 +1,1 @@
-web: gunicorn itProgerDj.wsgi.py
+web: gunicorn itProgerDj.wsgi
