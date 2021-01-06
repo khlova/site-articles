@@ -8,8 +8,8 @@ from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('/', include('home.urls')),
-    path('/', include('users.urls')),
+    path('', include('home.urls')),
+    path('', include('users.urls')),
     path('user', authViews.LoginView.as_view(template_name='users/user.html'), name = 'user'),
     path('exit', authViews.LogoutView.as_view(template_name='users/exit.html'), name = 'exit'),
 
