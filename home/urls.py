@@ -2,7 +2,7 @@ from django.urls import path, include
 from . import views
 
 urlpatterns = [
-    path('', views.ShowNewsView.as_view(), name = 'home'),
+    path('/', views.ShowNewsView.as_view(), name = 'home'),
     path('contacti', views.contacti, name = 'contacti'),
     path('news/<str:username>', views.UserAllNewsView.as_view(), name = 'user-news'),
     path('news/<int:pk>', views.NewsDetailView.as_view(), name = 'news-detail'),
