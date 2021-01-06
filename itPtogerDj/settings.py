@@ -1,7 +1,7 @@
 
 
 from pathlib import Path
-
+import django_heroku
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -132,3 +132,5 @@ LOGIN_URL = 'user'
 MEDIA_URL = '/pictures/'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'pictures')
+
+django_heroku.settings(locals()) #Вся наша прошла БД будет совместима с подключённой бд к проекту
