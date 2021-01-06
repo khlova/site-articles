@@ -25,3 +25,4 @@ if __name__ == '__main__':
 # heroku create django-blog-nazvanie (Создание проекта)
 # heroku open (Открытие ссылки сайта)
 # git push heroku master (Загрузить сайт на хероку)
+#heroku run bash (терминал на стороне хероку)
