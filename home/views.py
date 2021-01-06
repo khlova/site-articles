@@ -20,7 +20,7 @@ class ShowNewsView(ListView):
     template_name = 'home/index.html'
     context_object_name = 'news'
     ordering = ['-date'] #Сортировка
-    paginate_by = 2 #На одной стр выводится ток 2 записи
+    paginate_by = 3 #На одной стр выводится ток 2 записи
 
     def get_context_data(self, **kwards):
         ctx = super(ShowNewsView, self).get_context_data(**kwards)
@@ -96,7 +96,7 @@ class UserAllNewsView(ListView):
     model = News
     template_name = 'home/user_news.html'
     context_object_name = 'news'
-    paginate_by = 2 #На одной стр выводится ток 2 записи
+    paginate_by = 3 #На одной стр выводится ток 2 записи
 
     def get_queryset(self):
         user = get_object_or_404(User, username=self.kwargs.get('username')) #Получаем login пользователя из url адреса  /user/...
