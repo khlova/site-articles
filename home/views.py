@@ -4,6 +4,7 @@ from .models import News
 from django.views.generic import ListView, DeleteView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
+# Эта функция уже не нужна,т.к используется ListView
 # def Home(request):
 #
 #     data = {
