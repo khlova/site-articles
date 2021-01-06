@@ -20,3 +20,8 @@ def main():
 
 if __name__ == '__main__':
     main()
+
+
+# heroku create django-blog-nazvanie (Создание проекта)
+# heroku open (Открытие ссылки сайта)
+# git push heroku master (Загрузить сайт на хероку)
