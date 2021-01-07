@@ -5,7 +5,8 @@ from django.contrib import messages
 from django.contrib.auth.decorators import login_required
 
 from .forms import ContactForm
-from django.core.mail import send_mail
+from django.core.mail import send_mail, BadHeaderError
+from django.http import HttpResponse, HttpResponseRedirect
 
 from django.views.generic import ListView, DeleteView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
@@ -128,6 +129,24 @@ class UserAllNewsView(ListView):
 #         return ctx
 
 @login_required
+# def messagecont(request):
+#     if request.method == "POST":
+#         mess = ContactForm(request.POST)
+#         if mess.is_valid():
+#             order = mess.save(commit=False)
+#             order.user = request.user
+#             order.save()
+#
+#
+#             return redirect('contacti')
+#     else:
+#         mess = ContactForm()
+#
+#     return render(request, 'home/contact.html',
+#      {'title': 'Страница с контактами',
+#      'form': mess})
+
+
 def messagecont(request):
     if request.method == "POST":
         mess = ContactForm(request.POST)
@@ -135,9 +154,20 @@ def messagecont(request):
             order = mess.save(commit=False)
             order.user = request.user
             order.save()
-            # try:
-            #     send_mail(f'{subject} от {from_email}', plain_message, [to])
-            messages.success(request, 'Сообщение было успешно отправлено.')
+            subject = request.POST.get('subject', '')
+            plain_message = request.POST.get('plain_message', '')
+            from_email = request.POST.get('from_email', '')
+            to = request.POST.get('to', '')
+            if subject and plain_message and from_email and to:
+                try:
+                    send_mail(subject, plain_message, from_email, [to])
+                except BadHeaderError:
+                    return HttpResponse('Invalid header found.')
+                messages.success(request, 'Сообщение было успешно отправлено.')
+                return HttpResponseRedirect('contacti')
+            else:
+
+                return HttpResponse('Make sure all fields are entered and valid.')
             return redirect('contacti')
     else:
         mess = ContactForm()
@@ -145,6 +175,3 @@ def messagecont(request):
     return render(request, 'home/contact.html',
      {'title': 'Страница с контактами',
      'form': mess})
-
-
-

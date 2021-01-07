@@ -26,3 +26,4 @@ if __name__ == '__main__':
 # heroku open (Открытие ссылки сайта)
 # git push heroku master (Загрузить сайт на хероку)
 #heroku run bash (терминал на стороне хероку)
+#heroku run python manage.py migrate
