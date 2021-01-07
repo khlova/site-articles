@@ -156,7 +156,7 @@ def messagecont(request):
             order.save()
             subject = request.POST.get('subject', '')
             plain_message = request.POST.get('plain_message', '')
-            from_email = request.POST.get('from_email', 'admin@mail.ru')
+            from_email = request.POST.get('from_email', '')
             to = request.POST.get('to', '')
             if subject and plain_message and from_email and to:
                 try:
