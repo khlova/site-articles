@@ -29,3 +29,16 @@ class News(models.Model):
     class Meta:
         verbose_name = 'Новость'
         verbose_name_plural = 'Новости'
+
+
+class MessCont(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    subject = models.CharField('Тема сообщения', max_length=100)
+    plain_message = models.TextField('Текст сообщения')
+    from_email = models.EmailField('Почта отправителя')
+    to = models.EmailField('Почта получателя')
+
+    def __str__(self):
+        return f'Сообщение пользователя {self.user.username}'
+
+

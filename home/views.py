@@ -1,6 +1,12 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from django.contrib.auth.models import User
-from .models import News
+from .models import News, MessCont
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+
+from .forms import ContactForm
+from django.core.mail import send_mail
+
 from django.views.generic import ListView, DeleteView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 
@@ -13,7 +19,6 @@ from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 #     }
 #
 #     return render(request, 'home/index.html', data)
-
 
 class ShowNewsView(ListView):
     model = News
@@ -108,5 +113,38 @@ class UserAllNewsView(ListView):
         ctx['title'] = f"Статьи от пользователя {self.kwargs.get('username')}" #название страницы
         return ctx
 
-def contacti(request):
-    return render(request, 'home/contact.html', {'title': 'str contactov'})
+# def contacti(request):
+#     return render(request, 'home/contact.html', {'title': 'Страница с контактами'})
+
+
+# class MessagesCont(ListView):
+#     model = User
+#     template_name = 'home/contact.html'
+#
+#     def get_context_data(self, **kwards):
+#         ctx = super(MessagesCont, self).get_context_data(**kwards)
+#
+#         ctx['title'] = 'Страница с контактами'
+#         return ctx
+
+@login_required
+def messagecont(request):
+    if request.method == "POST":
+        mess = ContactForm(request.POST)
+        if mess.is_valid():
+            order = mess.save(commit=False)
+            order.user = request.user
+            order.save()
+            # try:
+            #     send_mail(f'{subject} от {from_email}', plain_message, [to])
+            messages.success(request, 'Сообщение было успешно отправлено.')
+            return redirect('contacti')
+    else:
+        mess = ContactForm()
+
+    return render(request, 'home/contact.html',
+     {'title': 'Страница с контактами',
+     'form': mess})
+
+
+
