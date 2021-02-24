@@ -19,7 +19,7 @@ SECRET_KEY = 'g+d=9=$u9y#g#u9*499pm4**76v4*t3)#rdz19xl$k%ff+o=if'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['my-first-project-django-blog.herokuapp.com']
+ALLOWED_HOSTS = ['site-articles-django.herokuapp.com']
 
 
 # Application definition
