@@ -7,7 +7,7 @@
 {% block body %}
   <h1>{{ title }}</h1>
   <form method="post" class="form-register auth">
-    {% csrf_token %}     <!--Получение данных из формы -->
+    {% csrf_token %}  <!--Получение данных из формы -->
     {{ form.as_p}}
   <button class="btn btn-outline-warning" type="submit">Отправить</button>
 </form>
