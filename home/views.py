@@ -128,25 +128,9 @@ class UserAllNewsView(ListView):
 #         ctx['title'] = 'Страница с контактами'
 #         return ctx
 
+
+
 @login_required
-# def messagecont(request):
-#     if request.method == "POST":
-#         mess = ContactForm(request.POST)
-#         if mess.is_valid():
-#             order = mess.save(commit=False)
-#             order.user = request.user
-#             order.save()
-#
-#
-#             return redirect('contacti')
-#     else:
-#         mess = ContactForm()
-#
-#     return render(request, 'home/contact.html',
-#      {'title': 'Страница с контактами',
-#      'form': mess})
-
-
 def messagecont(request):
     if request.method == "POST":
         mess = ContactForm(request.POST)

@@ -11,28 +11,28 @@
 </head>
 <body>
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="#">itPtogerDj</a>
+  <a class="navbar-brand" href="#"><h1>Vorteil</h1></a>
     <div class="collapse navbar-collapse" id="navbarsExample09">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="{% url 'home' %}">Home</a>
+          <a class="nav-link" href="{% url 'home' %}"><h5>Главная</h5></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="{% url 'contacti' %}">Contacti</a>
+          <a class="nav-link" href="{% url 'contacti' %}"><h5>Контакты</h5></a>
         </li>
       </ul>
 
 
     {% if not user.is_authenticated %}
       <a href="{% url 'reg' %}">
-        <button class="btn btn-outline-warning">Registration</button>
+        <button class="btn btn-outline-warning">Регистрация</button>
       </a>
       <a href="{% url 'user' %}">
         <button class="btn btn-outline-info ml-2">Войти</button>
       </a>
   {% else %}
   <a href="{% url 'news-add' %}">
-    <button class="btn btn-outline-secondary mr-2">Dobavit</button>
+    <button class="btn btn-outline-secondary mr-2">Добавить статью</button>
   </a>
   <a href="{% url 'profile' %}">
     <button class="btn btn-outline-warning">Профиль</button>
@@ -59,7 +59,7 @@
       {% endblock %}
     </div>
     <aside class="col-md-4">
-        <h3>Боковая часть</h3>
+        <h3>На повестке дня:</h3>
         <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quae iste incidunt atque nihil reprehenderit consectetur beatae. Tenetur odio illum facilis.</p>
         {% block aside %}
         {% endblock %}

@@ -8,7 +8,7 @@
   <form method="post" class="form-register auth">
     {% csrf_token %}
     {{ form.as_p}}
-    <button class="btn btn-outline-warning" type="submit">Registration</button>
+    <button class="btn btn-outline-warning" type="submit">Зарегистрироваться</button>
     <hr>
     <p>Уже зарегистрированы? <a href="{% url 'user' %}">Войти в личный кабинет</a></p>
   </form>
@@ -16,18 +16,18 @@
 {% endblock %}
 
 {% block aside %}
-  <h4 class="mt-2">Интересные статьи</h4>
-  <img src="https://s1.1zoom.ru/prev2/565/Dogs_Nova_Scotia_Duck_Tolling_Retriever_Puppy_564154_300x198.jpg" class="img-thumbmail">
+  <h3 class="mt-2 mb-3">Интересные статьи:</h3>
+  <img src="pictures/news/1.jpg" style="width:450px; height:320px;" class="img-thumbmail mb-2">
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 
-  <a href="https://unsplash.com/s/photos/dog?order_by=latest&orientation=landscape">
-    <button class="btn btn-warning">Посмотреть</button>
+  <a href="https://hvost.news/animals/dogs-feeding/chuvstvitelnoe-pishchevarenie-u-sobak/">
+    <button class="btn btn-warning mb-3">Посмотреть</button>
   </a>
 
-  <img src="https://otv-media.ru/upload/iblock/24a/24a2218e4fc26105d4f051ba9e957a2b.jpg" class="img-thumbmail mt-4">
+  <img src="pictures/news/2.jpg" style="width:450px; height:320px;" class="img-thumbmail mt-4 mb-2">
   <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
 
-  <a href="https://unsplash.com/s/photos/dog?order_by=latest&orientation=landscape">
-    <button class="btn btn-warning">Посмотреть</button>
+  <a href="https://hvost.news/animals/dogs-raising/kak-vystroit-granitsy-v-obshchenii-so-shchenkom/">
+    <button class="btn btn-warning mb-3">Посмотреть</button>
   </a>
 {% endblock %}
