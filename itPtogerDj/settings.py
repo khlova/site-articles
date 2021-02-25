@@ -17,7 +17,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = 'g+d=9=$u9y#g#u9*499pm4**76v4*t3)#rdz19xl$k%ff+o=if'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 ALLOWED_HOSTS = ['site-articles-django.herokuapp.com']
 
@@ -121,7 +121,6 @@ EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'Lerusha19999@gmail.com'
-EMAIL_HOST_PASSWORD = 'yfozuajafotcpecn'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
