@@ -125,9 +125,9 @@ EMAIL_HOST_USER = 'Lerusha19999@gmail.com'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATIC_URL = '/static/'
 
-# STATICFILES_DIRS = [
-#     os.path.join(BASE_DIR, "static")
-# ]
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, "static")
+]
 
 LOGIN_REDIRECT_URL = 'profile'
 LOGIN_URL = 'user'
