@@ -132,8 +132,10 @@ STATIC_URL = '/static/'
 LOGIN_REDIRECT_URL = 'profile'
 LOGIN_URL = 'user'
 
-MEDIA_URL = '/pictures/'
+MEDIA_URL = 'pictures'
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'pictures')
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 django_heroku.settings(locals()) #Вся наша прошла БД будет совместима с подключённой бд к проекту
